@@ -67,6 +67,7 @@ const ResultsTabs: FC<ResultsTabsProps> = ({ domain }): ReactElement => {
   useHotkeys('alt+2', () => router.push(`/lookup/${domain}/dns`), [router]);
   useHotkeys('alt+3', () => router.push(`/lookup/${domain}/whois`), [router]);
   useHotkeys('alt+4', () => router.push(`/lookup/${domain}/certs`), [router]);
+  useHotkeys('alt+5', () => router.push(`/lookup/${domain}/archive`), [router]);
 
   return (
     <div className="group mb-7 mt-6 border-b border-gray-200 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400">
@@ -97,6 +98,13 @@ const ResultsTabs: FC<ResultsTabsProps> = ({ domain }): ReactElement => {
           href={`/lookup/${domain}/certs`}
           selected={selectedSegment === 'certs'}
           shortcutNumber={4}
+          hideShortcut={!isDesktop}
+        />
+        <Tab
+          label="Archive"
+          href={`/lookup/${domain}/archive`}
+          selected={selectedSegment === 'archive'}
+          shortcutNumber={5}
           hideShortcut={!isDesktop}
         />
       </ul>

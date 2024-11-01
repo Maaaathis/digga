@@ -13,6 +13,7 @@ import DomainOwnerInfoWidget from '@/app/lookup/[domain]/(overview)/_components/
 import NameserverWidget from '@/app/lookup/[domain]/(overview)/_components/NameserverWidget';
 import TechnologiesWidget from '@/app/lookup/[domain]/(overview)/_components/TechnologiesWidget';
 import { bigquery } from '@/lib/bigquery';
+import { env } from '@/env';
 import { isDomainAvailable } from '@/lib/whois';
 
 import DomainNotRegistered from '../../../../components/DomainNotRegistered';
@@ -51,7 +52,7 @@ const LookupDomain: FC<LookupDomainProps> = async ({
   if (bigquery) {
     bigquery
       .insertRows({
-        datasetName: process.env.BIGQUERY_DATASET!,
+        datasetName: env.BIGQUERY_DATASET!,
         tableName: 'domain_lookups',
         rows: [
           {

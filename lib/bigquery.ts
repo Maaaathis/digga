@@ -1,9 +1,10 @@
-// @ts-expect-error
 import { getAccessToken } from 'web-auth-library/google';
 
-const credentials = process.env.GOOGLE_SERVICE_KEY_B64
+import { env } from '@/env';
+
+const credentials = env.GOOGLE_SERVICE_KEY_B64
   ? (JSON.parse(
-      Buffer.from(process.env.GOOGLE_SERVICE_KEY_B64, 'base64').toString()
+      Buffer.from(env.GOOGLE_SERVICE_KEY_B64, 'base64').toString()
     ) as {
       type: 'service_account';
       project_id: string;
